@@ -4,6 +4,11 @@ import numpy as np
 
 app = Flask(__name__)
 
+@app.route("/")  # ✅ Ensure this route exists
+def home():
+    return "Hello, Flask in Docker!"
+
+
 model = joblib.load('/app/model.pkl')
 
 def predict():
