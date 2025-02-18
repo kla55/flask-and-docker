@@ -46,6 +46,7 @@ docker run -p 5000:5000 ml-flask-app
 ```
 **Access:** [http://localhost:5000](http://localhost:5000)
 
+<!--
 ## API Endpoints
 ### **GET /health**
 **Check API status**
@@ -68,7 +69,7 @@ curl -X POST http://localhost:5000/predict \
 ```json
 {"prediction": 1}
 ```
-
+-->
 ## Debugging & Logs
 - Check running containers:
   ```bash
