@@ -88,19 +88,26 @@ curl -X POST http://localhost:5000/predict \
 
 ## Hints
 1. When ready for the image - run code > docker build -t ml-flask-app . 
-    1.1 'docker build' - Will instruct docker to build an image
-    1.2 '-t ml-flask-app' - Assign a tag -t to the image, naming it 'ml-flask-app'
+    1.1 'docker build' - Will instruct docker to build an image\
+    1.2 '-t ml-flask-app' - Assign a tag -t to the image, naming it 'ml-flask-app'\
     1.3 '.' - Specifies the build context where the Dockerfile is located
 
 2. To run the docker image with a new contain
-    2.1 'docker run' - start a new container from an image
-    2.2 '-p 5000:5000' - Maps port 5000 on the host to port 5000 in the container
+    2.1 'docker run' - start a new container from an image\
+    2.2 '-p 5000:5000' - Maps port 5000 on the host to port 5000 in the container\
     2.3 'ml-flask-app' - Specifies the DOcker image to use
 
 3. Will be able to access the Flask app by visiting the designated port
 
 4. Debugging keywords:
-    4.1 'docker run -it --rm ml-flask-app /bin/bash' - Run an interactive shell inside the container
+    4.1 'docker run -it --rm ml-flask-app /bin/bash' - Run an interactive shell inside the container\
     4.2 'ls -lah /app/' checks inside the container if the file exists
 
+5. Docker-compose --build: - used to build and start the docker container. It combines two operations:
+    5.1 '--build': This flag forces Docker Compse to rebuild the image for the services defined in the docker-compose.yml file before starting the container. This is useful if you have made changes to yoru dockerfile and want to make sure the latest changes are reflected in the containers.\
+    5.2 'docker-compose up': This command starts all the services defined in your yml file. If the image for hte services don't exist, Docker Compose will build the image before starting the container. \
+    5.3 Without --build: If you run docker-compose up without the --build flag, Docker Compose will use existing images (if they exist) and won’t rebuild them. If you’ve made changes to your Dockerfile or application code, you may not see those changes reflected unless you explicitly rebuild the images.
+
+
+        
 

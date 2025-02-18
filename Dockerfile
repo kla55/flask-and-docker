@@ -10,4 +10,6 @@ RUN python train_model.py
 
 EXPOSE 5000
 
+HEALTHCHECK CMD curl --fail http://localhost:5000/ || exit 1
+
 CMD ["python", "app.py"]
