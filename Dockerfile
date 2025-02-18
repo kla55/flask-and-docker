@@ -1,12 +1,12 @@
-FROM python 3.9
+FROM python:3.9
 
 WORKDIR /app
 
 COPY app.py train_model.py requirements.txt /app/
 
-RUN pip install --no-chache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN  python train_model.py
+RUN python train_model.py
 
 EXPOSE 5000
 
