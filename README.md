@@ -1,7 +1,91 @@
 # flask-and-docker
-Hints
-
 Purpose 
+# ML Model Deployment with Flask & Docker
+
+## Overview
+This project demonstrates how to deploy a **machine learning model** using **Flask** as an API, containerized with **Docker**.
+
+## Features
+- **Flask API** for real-time predictions
+- **Dockerized** for easy deployment
+- **Scikit-learn model** for inference
+
+## Prerequisites
+Ensure you have the following installed:
+- [Python 3.9+](https://www.python.org/downloads/)
+- [Docker](https://www.docker.com/get-started)
+
+
+### 2️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3️⃣ Train the Model
+Run the training script to generate the model file:
+```bash
+python train_model.py
+```
+
+## Running the Flask App
+### 4️⃣ Run Locally (Without Docker)
+```bash
+python app.py
+```
+**Access:** [http://localhost:5000](http://localhost:5000)
+
+### 5️⃣ Run with Docker
+#### **Build the Docker Image**
+```bash
+docker build -t ml-flask-app .
+```
+
+#### **Run the Docker Container**
+```bash
+docker run -p 5000:5000 ml-flask-app
+```
+**Access:** [http://localhost:5000](http://localhost:5000)
+
+## API Endpoints
+### **GET /health**
+**Check API status**
+```bash
+curl http://localhost:5000/health
+```
+#### **Response**
+```json
+{"status": "ok"}
+```
+
+### **POST /predict**
+**Make a prediction**
+```bash
+curl -X POST http://localhost:5000/predict \
+     -H "Content-Type: application/json" \
+     -d '{"features": [1.5, 2.3, 3.1]}'
+```
+#### **Response Example**
+```json
+{"prediction": 1}
+```
+
+## Debugging & Logs
+- Check running containers:
+  ```bash
+  docker ps
+  ```
+- View container logs:
+  ```bash
+  docker logs <container_id>
+  ```
+
+## Deployment Options
+- **Docker Compose:** Scale with `docker-compose.yml`
+- **Kubernetes:** Deploy using `kubectl`
+- **Cloud Services:** AWS, GCP, Azure
+
+
+## Hints
 1. When ready for the image - run code > docker build -t ml-flask-app . 
     1.1 'docker build' - Will instruct docker to build an image
     1.2 '-t ml-flask-app' - Assign a tag -t to the image, naming it 'ml-flask-app'
@@ -13,4 +97,9 @@ Purpose
     2.3 'ml-flask-app' - Specifies the DOcker image to use
 
 3. Will be able to access the Flask app by visiting the designated port
+
+4. Debugging keywords:
+    4.1 'docker run -it --rm ml-flask-app /bin/bash' - Run an interactive shell inside the container
+    4.2 'ls -lah /app/' checks inside the container if the file exists
+
 
