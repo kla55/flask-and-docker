@@ -108,6 +108,8 @@ curl -X POST http://localhost:5000/predict \
     5.2 'docker-compose up': This command starts all the services defined in your yml file. If the image for hte services don't exist, Docker Compose will build the image before starting the container. \
     5.3 Without --build: If you run docker-compose up without the --build flag, Docker Compose will use existing images (if they exist) and won’t rebuild them. If you’ve made changes to your Dockerfile or application code, you may not see those changes reflected unless you explicitly rebuild the images.
 
+6. 
+
 
         
 
