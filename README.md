@@ -108,7 +108,16 @@ curl -X POST http://localhost:5000/predict \
     5.2 'docker-compose up': This command starts all the services defined in your yml file. If the image for hte services don't exist, Docker Compose will build the image before starting the container. \
     5.3 Without --build: If you run docker-compose up without the --build flag, Docker Compose will use existing images (if they exist) and won’t rebuild them. If you’ve made changes to your Dockerfile or application code, you may not see those changes reflected unless you explicitly rebuild the images.
 
-6. 
+6. To run additional predictions via 'POST' call:
+    6.1 - This should be done with 'curl' commands, but on windows PowerShell, the alternative command that must be used is ' Invoke-WebRequest'
+    6.2 - The main request used is: "Invoke-WebRequest -Uri http://localhost:5000/predict -Method POST -Headers @{"Content-Type"="application/json"} -Body '{"features": [6.1, 3.5, 5.4, 4.2]}'"
+        6.2.1 - 'Invoke-WebRequest': The PowerShell command used to sent HTTP request.
+        6.2.2 - '-Uri http://localhost:5000/predict': Specifies the target URL where the prediction request is sent. The Flask API must be running on this address for the request to work.
+        6.2.3 - '-Method POST': Specifies that this is a 'POST' request, meaning we are sending data to the server. 
+        6.2.4 - '-Headers @{"Content-Type"="application/json"}': Sets the request header to indicate that the data being sent is in JSON format
+        6.2.5 - '-Body '{"features": [6.1, 3.5, 5.4, 4.2]}'': The request body containing the input features for the model. This should be formatted as JSON with a key called "features", followed by an array of numeric values representing the input data. 
+    6.3 - After providing the request- you can see the results in the Docker logs as well as the run commands.
+
 
 
         
